@@ -1,9 +1,9 @@
 # STM32F469I-DISCOVERY-Tasks
 
-Примеры проектов для STM32F469I-DISCOVERY.
+Projects for STM32F469I-DISCOVERY.
 
-1. Управление четырехразрядным семисегментным дисплеем
-2. Реализация UART на GPIO
-3. Реализация SPI на GPIO
-4. Реализация I2C на GPIO
-5. Комплексная программа по управлению платой расширения (см. readme в task_5)
+1. 4-digit 7-segment display driver
+2. UART implementation using GPIO
+3. SPI implementation using GPIO
+4. I2C implementation using GPIO
+5. Complex program to drive extension board (see readme in task_5)
