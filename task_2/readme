@@ -1,0 +1,4 @@
+# TASK 2
+
+1. Take a picture of uart frame (8N1). Put a description on that picture (start/stop bit, data bits, etc.). Data for the frame should be the first letter of your surname.
+2. Create a function that able to send a string to PCs serial port using software implementation of uart. Pls, do not use mcu's uart peripheral, use gpio and appropriate delays.

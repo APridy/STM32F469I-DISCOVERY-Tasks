@@ -1,0 +1,285 @@
+ARM GAS  /tmp/ccyYl3eZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"util.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.set_sysclk_max,"ax",%progbits
+  18              		.align	1
+  19              		.global	set_sysclk_max
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	set_sysclk_max:
+  27              	.LFB130:
+  28              		.file 1 "util/util.c"
+   1:util/util.c   **** #include "stm32f4xx.h"
+   2:util/util.c   **** #include "util.h"
+   3:util/util.c   **** 
+   4:util/util.c   **** void set_sysclk_max(void)
+   5:util/util.c   **** { //FLASH init
+  29              		.loc 1 5 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   6:util/util.c   **** FLASH->ACR &= ~FLASH_ACR_LATENCY;
+  34              		.loc 1 6 1 view .LVU1
+  35              		.loc 1 6 12 is_stmt 0 view .LVU2
+  36 0000 364B     		ldr	r3, .L6
+  37 0002 1A68     		ldr	r2, [r3]
+  38 0004 22F00F02 		bic	r2, r2, #15
+  39 0008 1A60     		str	r2, [r3]
+   7:util/util.c   **** FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
+  40              		.loc 1 7 1 is_stmt 1 view .LVU3
+  41              		.loc 1 7 12 is_stmt 0 view .LVU4
+  42 000a 1A68     		ldr	r2, [r3]
+  43 000c 42F00502 		orr	r2, r2, #5
+  44 0010 1A60     		str	r2, [r3]
+   8:util/util.c   **** FLASH->ACR |= FLASH_ACR_ICEN;
+  45              		.loc 1 8 1 is_stmt 1 view .LVU5
+  46              		.loc 1 8 12 is_stmt 0 view .LVU6
+  47 0012 1A68     		ldr	r2, [r3]
+  48 0014 42F40072 		orr	r2, r2, #512
+  49 0018 1A60     		str	r2, [r3]
+   9:util/util.c   **** FLASH->ACR |= FLASH_ACR_DCEN;
+ARM GAS  /tmp/ccyYl3eZ.s 			page 2
+
+
+  50              		.loc 1 9 1 is_stmt 1 view .LVU7
+  51              		.loc 1 9 12 is_stmt 0 view .LVU8
+  52 001a 1A68     		ldr	r2, [r3]
+  53 001c 42F48062 		orr	r2, r2, #1024
+  54 0020 1A60     		str	r2, [r3]
+  10:util/util.c   **** FLASH->ACR |= FLASH_ACR_PRFTEN;
+  55              		.loc 1 10 1 is_stmt 1 view .LVU9
+  56              		.loc 1 10 12 is_stmt 0 view .LVU10
+  57 0022 1A68     		ldr	r2, [r3]
+  58 0024 42F48072 		orr	r2, r2, #256
+  59 0028 1A60     		str	r2, [r3]
+  11:util/util.c   **** 
+  12:util/util.c   **** //HSE on
+  13:util/util.c   **** RCC->CR |= RCC_CR_HSEON;
+  60              		.loc 1 13 1 is_stmt 1 view .LVU11
+  61              		.loc 1 13 9 is_stmt 0 view .LVU12
+  62 002a 2D4A     		ldr	r2, .L6+4
+  63 002c 1368     		ldr	r3, [r2]
+  64 002e 43F48033 		orr	r3, r3, #65536
+  65 0032 1360     		str	r3, [r2]
+  14:util/util.c   **** while(!(RCC->CR & RCC_CR_HSERDY));
+  66              		.loc 1 14 1 is_stmt 1 view .LVU13
+  67              	.L2:
+  68              		.loc 1 14 34 discriminator 1 view .LVU14
+  69              		.loc 1 14 6 discriminator 1 view .LVU15
+  70              		.loc 1 14 12 is_stmt 0 discriminator 1 view .LVU16
+  71 0034 2A4B     		ldr	r3, .L6+4
+  72 0036 1B68     		ldr	r3, [r3]
+  73              		.loc 1 14 6 discriminator 1 view .LVU17
+  74 0038 13F4003F 		tst	r3, #131072
+  75 003c FAD0     		beq	.L2
+  15:util/util.c   **** 
+  16:util/util.c   **** //HSI trim and on
+  17:util/util.c   **** RCC->CR &= ~RCC_CR_HSITRIM;
+  76              		.loc 1 17 1 is_stmt 1 view .LVU18
+  77              		.loc 1 17 9 is_stmt 0 view .LVU19
+  78 003e 284B     		ldr	r3, .L6+4
+  79 0040 1A68     		ldr	r2, [r3]
+  80 0042 22F0F802 		bic	r2, r2, #248
+  81 0046 1A60     		str	r2, [r3]
+  18:util/util.c   **** RCC->CR |= 16 << RCC_CR_HSITRIM_Pos;
+  82              		.loc 1 18 1 is_stmt 1 view .LVU20
+  83              		.loc 1 18 9 is_stmt 0 view .LVU21
+  84 0048 1A68     		ldr	r2, [r3]
+  85 004a 42F08002 		orr	r2, r2, #128
+  86 004e 1A60     		str	r2, [r3]
+  19:util/util.c   **** RCC->CR |= RCC_CR_HSION;
+  87              		.loc 1 19 1 is_stmt 1 view .LVU22
+  88              		.loc 1 19 9 is_stmt 0 view .LVU23
+  89 0050 1A68     		ldr	r2, [r3]
+  90 0052 42F00102 		orr	r2, r2, #1
+  91 0056 1A60     		str	r2, [r3]
+  20:util/util.c   **** while(!(RCC->CR & RCC_CR_HSIRDY));
+  92              		.loc 1 20 1 is_stmt 1 view .LVU24
+  93              	.L3:
+  94              		.loc 1 20 34 discriminator 1 view .LVU25
+  95              		.loc 1 20 6 discriminator 1 view .LVU26
+ARM GAS  /tmp/ccyYl3eZ.s 			page 3
+
+
+  96              		.loc 1 20 12 is_stmt 0 discriminator 1 view .LVU27
+  97 0058 214B     		ldr	r3, .L6+4
+  98 005a 1B68     		ldr	r3, [r3]
+  99              		.loc 1 20 6 discriminator 1 view .LVU28
+ 100 005c 13F0020F 		tst	r3, #2
+ 101 0060 FAD0     		beq	.L3
+  21:util/util.c   **** 
+  22:util/util.c   **** //PLL init
+  23:util/util.c   **** RCC->PLLCFGR &= ~(RCC_PLLCFGR_PLLSRC | RCC_PLLCFGR_PLLM | RCC_PLLCFGR_PLLN);
+ 102              		.loc 1 23 1 is_stmt 1 view .LVU29
+ 103              		.loc 1 23 14 is_stmt 0 view .LVU30
+ 104 0062 1F4B     		ldr	r3, .L6+4
+ 105 0064 5968     		ldr	r1, [r3, #4]
+ 106 0066 1F4A     		ldr	r2, .L6+8
+ 107 0068 0A40     		ands	r2, r2, r1
+ 108 006a 5A60     		str	r2, [r3, #4]
+  24:util/util.c   **** RCC->PLLCFGR |= RCC_PLLCFGR_PLLSRC_HSE | RCC_PLLCFGR_PLLM_3 | (360 << RCC_PLLCFGR_PLLN_Pos);
+ 109              		.loc 1 24 1 is_stmt 1 view .LVU31
+ 110              		.loc 1 24 14 is_stmt 0 view .LVU32
+ 111 006c 5968     		ldr	r1, [r3, #4]
+ 112 006e 1E4A     		ldr	r2, .L6+12
+ 113 0070 0A43     		orrs	r2, r2, r1
+ 114 0072 5A60     		str	r2, [r3, #4]
+  25:util/util.c   **** 
+  26:util/util.c   **** RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLR;
+ 115              		.loc 1 26 1 is_stmt 1 view .LVU33
+ 116              		.loc 1 26 14 is_stmt 0 view .LVU34
+ 117 0074 5A68     		ldr	r2, [r3, #4]
+ 118 0076 22F0E042 		bic	r2, r2, #1879048192
+ 119 007a 5A60     		str	r2, [r3, #4]
+  27:util/util.c   **** 
+  28:util/util.c   **** //PLL on
+  29:util/util.c   **** RCC->CR |= RCC_CR_PLLON;
+ 120              		.loc 1 29 1 is_stmt 1 view .LVU35
+ 121              		.loc 1 29 9 is_stmt 0 view .LVU36
+ 122 007c 1A68     		ldr	r2, [r3]
+ 123 007e 42F08072 		orr	r2, r2, #16777216
+ 124 0082 1A60     		str	r2, [r3]
+  30:util/util.c   **** while(!(RCC->CR & RCC_CR_PLLRDY));
+ 125              		.loc 1 30 1 is_stmt 1 view .LVU37
+ 126              	.L4:
+ 127              		.loc 1 30 34 discriminator 1 view .LVU38
+ 128              		.loc 1 30 6 discriminator 1 view .LVU39
+ 129              		.loc 1 30 12 is_stmt 0 discriminator 1 view .LVU40
+ 130 0084 164B     		ldr	r3, .L6+4
+ 131 0086 1B68     		ldr	r3, [r3]
+ 132              		.loc 1 30 6 discriminator 1 view .LVU41
+ 133 0088 13F0007F 		tst	r3, #33554432
+ 134 008c FAD0     		beq	.L4
+  31:util/util.c   **** 
+  32:util/util.c   **** //AHB clock
+  33:util/util.c   **** RCC->CFGR &= ~RCC_CFGR_HPRE;
+ 135              		.loc 1 33 1 is_stmt 1 view .LVU42
+ 136              		.loc 1 33 11 is_stmt 0 view .LVU43
+ 137 008e 144B     		ldr	r3, .L6+4
+ 138 0090 9A68     		ldr	r2, [r3, #8]
+ 139 0092 22F0F002 		bic	r2, r2, #240
+ARM GAS  /tmp/ccyYl3eZ.s 			page 4
+
+
+ 140 0096 9A60     		str	r2, [r3, #8]
+  34:util/util.c   **** RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
+ 141              		.loc 1 34 1 is_stmt 1 view .LVU44
+ 142              		.loc 1 34 11 is_stmt 0 view .LVU45
+ 143 0098 9A68     		ldr	r2, [r3, #8]
+ 144 009a 9A60     		str	r2, [r3, #8]
+  35:util/util.c   **** //APB1 clock
+  36:util/util.c   **** RCC->CFGR &= ~RCC_CFGR_PPRE1;
+ 145              		.loc 1 36 1 is_stmt 1 view .LVU46
+ 146              		.loc 1 36 11 is_stmt 0 view .LVU47
+ 147 009c 9A68     		ldr	r2, [r3, #8]
+ 148 009e 22F4E052 		bic	r2, r2, #7168
+ 149 00a2 9A60     		str	r2, [r3, #8]
+  37:util/util.c   **** RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
+ 150              		.loc 1 37 1 is_stmt 1 view .LVU48
+ 151              		.loc 1 37 11 is_stmt 0 view .LVU49
+ 152 00a4 9A68     		ldr	r2, [r3, #8]
+ 153 00a6 42F4A052 		orr	r2, r2, #5120
+ 154 00aa 9A60     		str	r2, [r3, #8]
+  38:util/util.c   **** //APB2 clock
+  39:util/util.c   **** RCC->CFGR &= ~RCC_CFGR_PPRE2;
+ 155              		.loc 1 39 1 is_stmt 1 view .LVU50
+ 156              		.loc 1 39 11 is_stmt 0 view .LVU51
+ 157 00ac 9A68     		ldr	r2, [r3, #8]
+ 158 00ae 22F46042 		bic	r2, r2, #57344
+ 159 00b2 9A60     		str	r2, [r3, #8]
+  40:util/util.c   **** RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
+ 160              		.loc 1 40 1 is_stmt 1 view .LVU52
+ 161              		.loc 1 40 11 is_stmt 0 view .LVU53
+ 162 00b4 9A68     		ldr	r2, [r3, #8]
+ 163 00b6 42F40042 		orr	r2, r2, #32768
+ 164 00ba 9A60     		str	r2, [r3, #8]
+  41:util/util.c   **** //System clock (SysClk)
+  42:util/util.c   **** RCC->CFGR &= ~RCC_CFGR_SW;
+ 165              		.loc 1 42 1 is_stmt 1 view .LVU54
+ 166              		.loc 1 42 11 is_stmt 0 view .LVU55
+ 167 00bc 9A68     		ldr	r2, [r3, #8]
+ 168 00be 22F00302 		bic	r2, r2, #3
+ 169 00c2 9A60     		str	r2, [r3, #8]
+  43:util/util.c   **** RCC->CFGR |= RCC_CFGR_SW_PLL;
+ 170              		.loc 1 43 1 is_stmt 1 view .LVU56
+ 171              		.loc 1 43 11 is_stmt 0 view .LVU57
+ 172 00c4 9A68     		ldr	r2, [r3, #8]
+ 173 00c6 42F00202 		orr	r2, r2, #2
+ 174 00ca 9A60     		str	r2, [r3, #8]
+  44:util/util.c   **** while((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL);
+ 175              		.loc 1 44 1 is_stmt 1 view .LVU58
+ 176              	.L5:
+ 177              		.loc 1 44 54 discriminator 1 view .LVU59
+ 178              		.loc 1 44 6 discriminator 1 view .LVU60
+ 179              		.loc 1 44 11 is_stmt 0 discriminator 1 view .LVU61
+ 180 00cc 044B     		ldr	r3, .L6+4
+ 181 00ce 9B68     		ldr	r3, [r3, #8]
+ 182              		.loc 1 44 18 discriminator 1 view .LVU62
+ 183 00d0 03F00C03 		and	r3, r3, #12
+ 184              		.loc 1 44 6 discriminator 1 view .LVU63
+ 185 00d4 082B     		cmp	r3, #8
+ARM GAS  /tmp/ccyYl3eZ.s 			page 5
+
+
+ 186 00d6 F9D1     		bne	.L5
+  45:util/util.c   **** 
+  46:util/util.c   **** #ifdef MCO1
+  47:util/util.c   **** //MCO1 output is PLLCLK / 4 = 45MHz
+  48:util/util.c   **** RCC->CFGR &= ~RCC_CFGR_MCO1PRE;
+  49:util/util.c   **** RCC->CFGR |= RCC_CFGR_MCO1PRE_2 | RCC_CFGR_MCO1PRE_1;
+  50:util/util.c   **** RCC->CFGR |= RCC_CFGR_MCO1;
+  51:util/util.c   **** 
+  52:util/util.c   **** RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+  53:util/util.c   **** 
+  54:util/util.c   **** GPIOA->MODER |= GPIO_MODER_MODER8_1;
+  55:util/util.c   **** GPIOA->AFR[1] &= ~(1<<GPIO_AFRH_AFRH0);
+  56:util/util.c   **** GPIOA->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR8;
+  57:util/util.c   **** #endif
+  58:util/util.c   **** }
+ 187              		.loc 1 58 1 view .LVU64
+ 188 00d8 7047     		bx	lr
+ 189              	.L7:
+ 190 00da 00BF     		.align	2
+ 191              	.L6:
+ 192 00dc 003C0240 		.word	1073888256
+ 193 00e0 00380240 		.word	1073887232
+ 194 00e4 0080BFFF 		.word	-4227072
+ 195 00e8 085A4000 		.word	4217352
+ 196              		.cfi_endproc
+ 197              	.LFE130:
+ 199              		.text
+ 200              	.Letext0:
+ 201              		.file 2 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+ 202              		.file 3 "../CMSIS/Include/core_cm4.h"
+ 203              		.file 4 "../CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 204              		.file 5 "../CMSIS/Device/ST/STM32F4xx/Include/stm32f469xx.h"
+ARM GAS  /tmp/ccyYl3eZ.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 util.c
+     /tmp/ccyYl3eZ.s:18     .text.set_sysclk_max:0000000000000000 $t
+     /tmp/ccyYl3eZ.s:26     .text.set_sysclk_max:0000000000000000 set_sysclk_max
+     /tmp/ccyYl3eZ.s:192    .text.set_sysclk_max:00000000000000dc $d
+
+NO UNDEFINED SYMBOLS

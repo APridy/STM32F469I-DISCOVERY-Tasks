@@ -1,0 +1,4 @@
+# TASK 1
+
+Create a program that shows up "1234" or another different symbols on 7-segment led display. Program should be able to turn off any symbol on pressing a corresponding button.
+Reference is here: https://youtu.be/viBl81wMqyw

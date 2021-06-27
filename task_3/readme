@@ -1,0 +1,4 @@
+# TASK 3
+
+1. Take a picture of SPI signal (MOSI+SCLK) with different clock polarity and phase.
+2. Extension board consists M93C76 EEPROM IC. Each M93C76 has an unique 6 bytes (big endian) token somewhere "inside". Your task is to find it, report to trainer and write to M93C76 your last name starting from the first address of token. Please read carefully "bare_metal/docs/M93C76.pdf" and study how M93C76 is connected.

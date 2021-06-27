@@ -1,0 +1,4 @@
+# TASK 4
+
+1. Take a picture of I2c signal (SDA+SCL). Mark START/STOP/ACK/DATA_BITS conditions.
+2. Extension board consists M24C16 EEPROM IC. Each M24C16 has an unique 6 bytes (big endian) token somewhere "inside". Your task is to find it, report to trainer and write to M24C16 your last name starting from the first address of token.You have to create software implementation of I2C protocol using gpio and delays. Please read carefully "bare_metal/docs/M24C16.pdf" and study how M24C16 is connected.

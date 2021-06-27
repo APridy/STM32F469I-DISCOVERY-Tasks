@@ -1,0 +1,113 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AS	Makefile	/^AS = $(GCC_PATH)\/$(PREFIX)gcc -x assembler-with-cpp$/;"	m
+AS	Makefile	/^AS = $(PREFIX)gcc -x assembler-with-cpp$/;"	m
+ASCII	main.c	/^	ASCII = 2$/;"	e	enum:EEPROMWriteMode	file:
+ASFLAGS	Makefile	/^ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections$/;"	m
+ASM_SOURCES	Makefile	/^ASM_SOURCES =  \\$/;"	m
+AS_DEFS	Makefile	/^AS_DEFS =$/;"	m
+AS_INCLUDES	Makefile	/^AS_INCLUDES =$/;"	m
+BIN	Makefile	/^BIN = $(CP) -O binary -S$/;"	m
+BINARY	main.c	/^	BINARY = 1,$/;"	e	enum:EEPROMWriteMode	file:
+BUILD_DIR	Makefile	/^BUILD_DIR = build$/;"	m
+CC	Makefile	/^CC = $(GCC_PATH)\/$(PREFIX)gcc$/;"	m
+CC	Makefile	/^CC = $(PREFIX)gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections$/;"	m
+CP	Makefile	/^CP = $(GCC_PATH)\/$(PREFIX)objcopy$/;"	m
+CP	Makefile	/^CP = $(PREFIX)objcopy$/;"	m
+CPU	Makefile	/^CPU = -mcpu=cortex-m4$/;"	m
+C_DEFS	Makefile	/^C_DEFS =  \\$/;"	m
+C_INCLUDES	Makefile	/^C_INCLUDES =  \\$/;"	m
+C_SOURCES	Makefile	/^C_SOURCES =  \\$/;"	m
+DEBUG	Makefile	/^DEBUG = 1$/;"	m
+DUMMYADDRESS_WEN	main.c	/^	DUMMYADDRESS_WEN = 3 << 8,$/;"	e	enum:dummyAddress	file:
+DUMMY_WORD	main.c	32;"	d	file:
+EEPROMWriteMode	main.c	/^enum EEPROMWriteMode {$/;"	g	file:
+EEPROM_ADDRESS_LENGTH	main.c	33;"	d	file:
+EIGHT	main.c	24;"	d	file:
+FIVE	main.c	21;"	d	file:
+FLOAT-ABI	Makefile	/^FLOAT-ABI = -mfloat-abi=hard$/;"	m
+FOUR	main.c	20;"	d	file:
+FPU	Makefile	/^FPU = -mfpu=fpv4-sp-d16$/;"	m
+HEX	Makefile	/^HEX = $(CP) -O ihex$/;"	m
+KEY_B1	main.c	10;"	d	file:
+KEY_B2	main.c	11;"	d	file:
+KEY_B3	main.c	12;"	d	file:
+KEY_B4	main.c	13;"	d	file:
+KEY_EVERY	main.c	14;"	d	file:
+LDFLAGS	Makefile	/^LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)\/$(TARGET).map,--cref -Wl,--gc-sections$/;"	m
+LDSCRIPT	Makefile	/^LDSCRIPT = ..\/CMSIS\/STM32F469NIHx_FLASH.ld$/;"	m
+LED_1	main.c	5;"	d	file:
+LED_2	main.c	6;"	d	file:
+LED_3	main.c	7;"	d	file:
+LED_4	main.c	8;"	d	file:
+LIBDIR	Makefile	/^LIBDIR =$/;"	m
+LIBS	Makefile	/^LIBS = -lc -lm -lnosys$/;"	m
+MAX_ITOA_OUTPUT_LENGTH	main.c	31;"	d	file:
+MCU	Makefile	/^MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)$/;"	m
+NINE	main.c	25;"	d	file:
+NUMBER_OF_DIGITS	main.c	29;"	d	file:
+NUMBER_OF_KEY_PINS	main.c	28;"	d	file:
+NUMBER_OF_LEDS	main.c	27;"	d	file:
+OBJECTS	Makefile	/^OBJECTS = $(addprefix $(BUILD_DIR)\/,$(notdir $(C_SOURCES:.c=.o)))$/;"	m
+ONE	main.c	17;"	d	file:
+OPCODE_WEN	main.c	/^	OPCODE_WEN = 0b100,$/;"	e	enum:opCode	file:
+OPCODE_WRITE	main.c	/^	OPCODE_WRITE = 0b101,$/;"	e	enum:opCode	file:
+OPT	Makefile	/^OPT = -Og$/;"	m
+PREFIX	Makefile	/^PREFIX = arm-none-eabi-$/;"	m
+SEVEN	main.c	23;"	d	file:
+SIX	main.c	22;"	d	file:
+SPI2Init	main.c	/^void SPI2Init() {$/;"	f
+SPI6Init	main.c	/^void SPI6Init() {$/;"	f
+SZ	Makefile	/^SZ = $(GCC_PATH)\/$(PREFIX)size$/;"	m
+SZ	Makefile	/^SZ = $(PREFIX)size$/;"	m
+SysTick_Handler	main.c	/^void SysTick_Handler(void) { \/\/ redefinition of SysTick_Handler$/;"	f
+TARGET	Makefile	/^TARGET = f469$/;"	m
+THREE	main.c	19;"	d	file:
+TWO	main.c	18;"	d	file:
+UART3Init	main.c	/^void UART3Init() {$/;"	f
+USART3_IRQHandler	main.c	/^void USART3_IRQHandler (void) { \/\/ redefinition of USART3 rx interrupt handler, provides convinient way to set display value$/;"	f
+ZERO	main.c	16;"	d	file:
+__UTIL_H__	util/util.h	2;"	d
+blinkLed	main.c	/^void blinkLed() { \/\/ for debugging purposes$/;"	f
+csDown	main.c	/^void csDown() {$/;"	f
+csUp	main.c	/^void csUp() {$/;"	f
+delayMcs	main.c	/^void delayMcs(int mcs) { \/\/ delay in microseconds$/;"	f
+delayMs	main.c	/^void delayMs(unsigned int ms) { \/\/ delay in miliseconds$/;"	f
+delay_ms	util/util.c	/^void delay_ms(int ms)$/;"	f
+digit_array	main.c	/^uint16_t digit_array[NUMBER_OF_DIGITS] = {ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE};$/;"	v
+displayValue	main.c	/^uint16_t displayValue = 9999;$/;"	v
+displayValueUsart3	main.c	/^uint16_t displayValueUsart3 = 0;$/;"	v
+displayValueUsart3Symbols	main.c	/^uint16_t displayValueUsart3Symbols = 0;$/;"	v
+driveShield	main.c	/^void driveShield() { \/\/ main function to control extension shield$/;"	f
+dummyAddress	main.c	/^enum dummyAddress {$/;"	g	file:
+enableEEPROM	main.c	/^void enableEEPROM() {$/;"	f
+errorInvalidMode	main.c	/^const char* errorInvalidMode = "ERROR: Invalid memory output mode\\n\\r\\0";$/;"	v
+errorInvalidValue	main.c	/^const char* errorInvalidValue = "ERROR: Value should vary between 0 and 9999\\n\\r\\0";$/;"	v
+isize	main.c	/^int isize(int number) { \/\/ calculates number size in symbols$/;"	f
+itoa	main.c	/^char* itoa(int value) { \/\/ converts integer to string$/;"	f
+itoa_output	main.c	/^char itoa_output[MAX_ITOA_OUTPUT_LENGTH];$/;"	v
+key_array	main.c	/^uint16_t key_array[NUMBER_OF_KEY_PINS] = {KEY_B3, KEY_B2, KEY_B1, KEY_B4};$/;"	v
+key_on	main.c	35;"	d	file:
+led_array	main.c	/^uint16_t led_array[NUMBER_OF_LEDS] = {LED_1, LED_2, LED_3, LED_4};$/;"	v
+main	main.c	/^int main(void)$/;"	f
+opCode	main.c	/^enum opCode {$/;"	g	file:
+power	main.c	/^int power(int base, int a) { \/\/ calculates power a of base$/;"	f
+rclkRise	main.c	/^void rclkRise() { \/\/ rising edge RCLK$/;"	f
+registerUpdate	main.c	/^void registerUpdate() { \/\/ copies shift register to non-shift register$/;"	f
+sTicks	main.c	/^volatile int sTicks = 0;$/;"	v
+sendViaSPI2	main.c	/^void sendViaSPI2(uint16_t value) {$/;"	f
+sendViaSPI6	main.c	/^void sendViaSPI6(uint16_t value) {$/;"	f
+sendViaUsart3	main.c	/^void sendViaUsart3(const char* msg) {$/;"	f
+setDigit	main.c	/^void setDigit(uint16_t digit, uint16_t led_num) { \/\/ sets symbol on selected led$/;"	f
+set_sysclk_max	util/util.c	/^void set_sysclk_max(void)$/;"	f
+strlen	main.c	/^int strlen(const char* string) { \/\/ returns string length$/;"	f
+ticks	main.c	/^volatile int ticks = 0;$/;"	v
+usart3_init	util/util.c	/^void usart3_init(void)$/;"	f
+usart3_putchar	util/util.c	/^void usart3_putchar(char ch)$/;"	f
+usart3_puts	util/util.c	/^void usart3_puts(char *s)$/;"	f
+writeToEEPROM	main.c	/^void writeToEEPROM(int value, int mode) {$/;"	f
